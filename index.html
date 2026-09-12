@@ -1,0 +1,150 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A curated product discovery experience with live search and persistent favorites.">
+  
+  <title>Northstar Market | Product discovery</title>
+
+  <!-- Typography & External Styles -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="page-shell">
+    
+    <!--  Navigation  Header  -->
+
+    <header class="site-header" aria-label="Site header">
+      <a class="brand" href="index.html" aria-label="Northstar Market home">
+        <span class="brand-mark" aria-hidden="true">N</span>
+        <span>Northstar <em>Market</em></span>
+      </a>
+
+      <div class="header-actions">
+        <span class="header-note">Thoughtful things, found well.</span>
+        <button id="favoritesSummary" class="favorites-summary" type="button" aria-label="Show favorites only">
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M20.8 8.9c0 5.2-8.8 10.1-8.8 10.1S3.2 14.1 3.2 8.9A4.7 4.7 0 0 1 12 6.5a4.7 4.7 0 0 1 8.8 2.4Z" />
+          </svg>
+          <span>Favorites</span>
+          <b id="favoritesCount">0</b>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Content Stream -->
+
+    <main>
+
+      <!-- Hero Banner -->
+
+      <section class="hero" aria-labelledby="pageTitle">
+        <div class="hero-copy">
+          <p class="eyebrow">The daily edit <span></span> 2024 collection</p>
+          <h1 id="pageTitle">Good design is<br><i>always</i> in season.</h1>
+          <p class="hero-description">
+            A considered collection of useful objects, clever tools, and everyday upgrades for a life well lived.
+          </p>
+        </div>
+
+        <div class="hero-aside" aria-label="Collection details">
+          <span class="hero-index">01 <small>/ 04</small></span>
+          <p>Objects with a point of view.<br>Curated for curious people.</p>
+          <span class="scroll-cue">Scroll to explore <span aria-hidden="true">↓</span></span>
+        </div>
+      </section>
+
+      <!--  Catalog Section  -->
+
+      <section class="catalog" aria-labelledby="catalogTitle">
+        <div class="catalog-heading">
+          <div>
+            <p class="eyebrow">The collection</p>
+            <h2 id="catalogTitle">Find your next <i>favorite.</i></h2>
+          </div>
+          <p id="resultCount" class="result-count" aria-live="polite">Loading collection...</p>
+        </div>
+
+        <!--  Toolbar & Search Controls  -->
+
+        <div class="controls" role="search">
+          <label class="search-field" for="searchInput">
+            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <circle cx="11" cy="11" r="6.5" />
+              <path d="m16 16 4.5 4.5" />
+            </svg>
+            <span class="sr-only">Search products by title</span>
+            <input id="searchInput" type="search" placeholder="Search the collection" autocomplete="off">
+            <kbd>/</kbd>
+          </label>
+
+          <div class="control-group">
+            <button id="favoritesFilter" class="filter-button" type="button" aria-pressed="false">
+              <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M20.8 8.9c0 5.2-8.8 10.1-8.8 10.1S3.2 14.1 3.2 8.9A4.7 4.7 0 0 1 12 6.5a4.7 4.7 0 0 1 8.8 2.4Z" />
+              </svg>
+              <span>Favorites only</span>
+            </button>
+
+            <label class="sort-field" for="sortSelect">
+              <span>Sort</span>
+              <select id="sortSelect" aria-label="Sort products by price">
+                <option value="default">Featured</option>
+                <option value="price-asc">Price: low to high</option>
+                <option value="price-desc">Price: high to low</option>
+              </select>
+              <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="m7 10 5 5 5-5" />
+              </svg>
+            </label>
+          </div>
+        </div>
+
+        <!--  Dynamic UI States  -->
+
+        <div id="statusRegion" aria-live="polite">
+          <div id="loadingState" class="loading-state" aria-label="Loading products">
+            <span class="spinner"></span>
+            <span>Gathering the good stuff...</span>
+          </div>
+
+          <div id="errorState" class="error-state" hidden>
+            <span class="error-icon" aria-hidden="true">!</span>
+            <div>
+              <strong>We hit a small roadblock.</strong>
+              <p id="errorMessage">The collection could not be loaded.</p>
+            </div>
+            <button id="retryButton" class="retry-button" type="button">Try again</button>
+          </div>
+
+          <div id="emptyState" class="empty-state" hidden>
+            <span class="empty-icon" aria-hidden="true">○</span>
+            <h3>Nothing here just yet.</h3>
+            <p>Try another search or save a few pieces to your favorites.</p>
+          </div>
+        </div>
+
+        <!-- Product Grid Mount  -->
+        <div id="productGrid" class="product-grid" aria-label="Product collection"></div>
+      </section>
+
+    </main>
+
+    <!--  Footer  -->
+    <footer class="site-footer">
+      <span>Northstar Market</span>
+      <span>Curated with intention <i aria-hidden="true">✦</i></span>
+      <span>© 2024</span>
+    </footer>
+
+  </div>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
