@@ -106,6 +106,7 @@ async function fetchProducts() {
   }
 }
 
+// State Updates & Filter Operations
 
 function setLoadingState(status) {
   elements.loading.hidden = status !== "loading";
