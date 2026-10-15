@@ -52,7 +52,13 @@ function saveFavorites() {
   }
 }
 
-
+function debounce(callback, delay) {
+  let timeoutId;
+  return (...args) => {
+    window.clearTimeout(timeoutId);
+    timeoutId = window.setTimeout(() => callback(...args), delay);
+  };
+}
 
 function escapeHtml(value) {
   return String(value).replace(
