@@ -52,7 +52,7 @@ function saveFavorites() {
   }
 }
 
-function debounce(callback, delay) {
+// function debounce(callback, delay) {
   let timeoutId;
   return (...args) => {
     window.clearTimeout(timeoutId);
