@@ -184,9 +184,7 @@ function render() {
   elements.favoritesFilter.setAttribute(
     "aria-pressed",
     String(state.favoritesOnly),
-  );
-  elements.favoritesSummary.setAttribute(
-    "aria-label",
+ bel",
     `${state.favorites.length} favorites. Show favorites only`,
   );
 
