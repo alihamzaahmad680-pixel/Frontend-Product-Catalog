@@ -180,11 +180,7 @@ function createProductCard(product, index) {
 }
 
 function render() {
-  elements.favoritesCount.textContent = state.favorites.length;
-  elements.favoritesFilter.setAttribute(
-    "aria-pressed",
-    String(state.favoritesOnly),
- bel",
+
     `${state.favorites.length} favorites. Show favorites only`,
   );
 
