@@ -183,7 +183,7 @@ function render() {
   elements.favoritesCount.textContent = state.favorites.length;
   elements.favoritesFilter.setAttribute(
     "aria-pressed",
-    String(state.favoritesOnly),
+    String(state.favoritesOnl
  bel",
     `${state.favorites.length} favorites. Show favorites only`,
   );
